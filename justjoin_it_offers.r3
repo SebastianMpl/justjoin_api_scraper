@@ -1,7 +1,11 @@
 REBOL[]
 
+either not exists? to-file now/date [
 adr: https://justjoin.it/api/offers
 fhand: to-string read adr
+]
+[print "File for today is already available locally." quit]
+
 chars_to_replace: charset [#"^"" #"{" #"}"]
 
 title: [thru {"title":} copy job_title to "," (append jobs job_title)]
@@ -16,10 +20,8 @@ rule: [ any [ title city company pub_date emp_type ]]
       
 parse fhand rule
 
-if not exists? to-file now/date [
 foreach [job city company date emp] jobs
 
    [write/binary/append  to-file now/date replace/all 
    rejoin [job ";" city ";" company ";" date ";" emp newline ]
    chars_to_replace ""]
-]
