@@ -1,8 +1,11 @@
 REBOL[]
 
+just-join: https://justjoin.it/api/offers
+rocket-jobs: https://api.rocketjobs.pl/v2/user-panel/offers
+
+store-data: function [api-url] [
 either not exists? to-file now/date [
-adr: https://justjoin.it/api/offers
-fhand: to-string read adr
+fhand: to-string read api-url 
 ]
 [print "File for today is already available locally." quit]
 
@@ -25,3 +28,16 @@ foreach [job city company date emp] jobs
    [write/binary/append  to-file now/date replace/all 
    rejoin [job ";" city ";" company ";" date ";" emp newline ]
    chars_to_replace ""]
+
+print "Download complete"
+]
+site: ask {Which offers to fetch?
+           1: justjoin.it
+           2: rocketjobs.pl
+           3: quit
+           }
+switch to-integer site [
+1 [store-data to-url just-join]
+2 [store-data to-url rocket-jobs]
+3 [quit]
+]
