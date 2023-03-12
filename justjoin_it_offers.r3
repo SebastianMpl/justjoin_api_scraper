@@ -1,4 +1,9 @@
 REBOL[]
+;
+;;Command that scrapes the same data with xidel tool
+;;./xidel https://justjoin.it/api/offers -e 'for $node in $json() return string-join((
+;;   $node/title, $node/city, $node/company_name, $node/published_at, $node/employment_types/type, 
+;;   $node/employment_types/salary/from, $node/employment_types/salary/to, $node/employment_types/currency), ",")'
 
 either not exists? to-file now/date [
 adr: https://justjoin.it/api/offers
