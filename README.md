@@ -1,4 +1,5 @@
 !!! Due to api changes the script no longer works
+!!! Just join IT no longer stores all offers in one json file
 # JustJoin.it API Parser and Extractor
 ### Early Alpha Stage
 [WIP]
