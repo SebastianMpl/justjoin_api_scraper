@@ -1,3 +1,4 @@
+!!! Due to api changes the script no longer works
 # JustJoin.it API Parser and Extractor
 ### Early Alpha Stage
 [WIP]
