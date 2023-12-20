@@ -1,3 +1,4 @@
+; No longer works doe to change in just join.it API
 REBOL[]
 ;
 ;;Command that scrapes the same data with xidel tool
